@@ -1,0 +1,253 @@
+/****** grid *******/
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "one two four four"
+    "one two five five"
+    "one three five five";
+
+  gap: 1.5rem;
+  height: 60vh;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  @media (max-width: 769px) {
+    padding-bottom: 0rem;
+  }
+
+  > .grid-box,
+  .grid-box-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    will-change: transform;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); // smoother easing
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      pointer-events: none; // ensure it doesn’t block interactions
+    }
+    &:nth-child(1) {
+      grid-area: one;
+      // background: #8ecae6;
+    }
+    &:nth-child(2) {
+      grid-area: two;
+      // background: #219ebc;
+    }
+    &:nth-child(3) {
+      grid-area: three;
+      // background: #023047;
+    }
+    &:nth-child(4) {
+      grid-area: four;
+      // background: #ffb703;
+    }
+    &:nth-child(5) {
+      grid-area: five;
+      // background: #fb8500;
+    }
+
+    &.has-bg-image {
+      z-index: 2;
+      position: relative;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      height: 100%;
+      width: 100%;
+
+      &:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        // background: rgba(0, 0, 0, 0.45);
+        z-index: 1;
+      }
+    }
+
+    .grid-box-content,
+    .grid-info {
+      z-index: 2;
+    }
+
+    .grid-info {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      @media (min-width: 768px) {
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        pointer-events: none; // ensure it doesn’t block clicks
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      @media (min-width: 770px) {
+        transform: scale(1.03); // subtle zoom effect
+      }
+
+      z-index: 2; // ensures it's above adjacent items
+
+      .grid-info {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    &.color-primary {
+      color: black;
+      svg {
+        color: black;
+      }
+    }
+  }
+
+  .grid-box-wrapper {
+    position: relative;
+    display: inline-block;
+    border-radius: 1rem;
+    padding: 3px; /* thickness of the border */
+    background: linear-gradient(120deg, #1e6f5c, #3a923a, #1e6f5c);
+    background-size: 800% 800%; /* wider spread for smoother glowing waves */
+    animation: borderMove 2s linear infinite;
+
+    box-shadow: 0 0 10px rgba(58, 146, 58, 0.6);
+
+    @media (max-width: 769px) {
+      padding: 4px;
+    }
+
+    .grid-box {
+      background: white; // or transparent
+      border-radius: 0.8rem; // slightly smaller to fit inside the wrapper
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      transform: scale(1);
+
+      @media (max-width: 769px) {
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 100%;
+        transform: scale(1);
+      }
+    }
+
+    .grid-box-content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      h3 {
+        @media (max-width: 769px) {
+          margin-bottom: 0.5rem;
+        }
+      }
+      p {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 769px) {
+      max-height: 95%;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 100%;
+
+      flex: 0 0 35%;
+      min-width: 35%;
+      max-width: 80%;
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+    }
+  }
+}
+
+@keyframes borderMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    padding: 0 10vw 1rem; // creates visual breathing room on left/right
+    height: 40vh;
+    margin-right: -5rem;
+    margin-left: -5rem;
+    margin-top: 2.5rem;
+
+    > .grid-box {
+      max-height: 95%;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 1rem;
+
+      &:first-child {
+        margin-left: 5rem;
+      }
+    }
+  }
+
+  .grid-box {
+    flex: 0 0 35%; // You can also use 100% or any fixed width
+    min-width: 35%;
+    max-width: 80%;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    // .grid-box-content {
+    //   text-align: center;
+    // }
+  }
+
+  .grid::after {
+    content: "";
+    flex: 0 0 10vw; // same width as the padding
+    height: 1px;
+  }
+
+  /* Optional: align first and last card like Monzo */
+  .grid-box:first-child {
+    margin-left: 0.5rem;
+  }
+
+  .grid-box:last-child {
+    margin-right: 0.5rem;
+  }
+
+  /* Optional: Hide scrollbar (cross-browser) */
+  .grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .grid {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}

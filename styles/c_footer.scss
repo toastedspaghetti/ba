@@ -1,0 +1,105 @@
+/* footer */
+footer {
+  margin-top: 5rem;
+  min-height: 25rem;
+  background: black;
+  padding: 0rem 0 2rem;
+
+  position: relative;
+  overflow: hidden;
+  background-color: black; // fallback for very bottom
+
+  > svg {
+    height: 0px;
+  }
+
+  .footer-logo-social {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 4rem;
+    align-items: center;
+    .footer-social {
+      display: flex;
+      column-gap: 1.25rem;
+      svg {
+        font-size: 1.75rem;
+      }
+    }
+  }
+
+  .footer-background {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .footer-gradient-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(0, 0, 0, 0.7) 90%,
+        #000 100%
+      );
+
+      background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        // strong white at the top
+        rgba(255, 255, 255, 0.6) 20%,
+        // soft fade
+        rgba(0, 0, 0, 0) 55%,
+        // fully transparent midpoint
+        rgba(0, 0, 0, 0.4) 75%,
+        // gradual darkening
+        rgba(0, 0, 0, 0.75) 90%,
+        // stronger black
+        #000000 100% // solid black at the bottom
+      );
+      pointer-events: none;
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, transparent 60%, black 100%);
+        filter: blur(20px); // ⬅️ real blur!
+        opacity: 0.5;
+        pointer-events: none;
+      }
+    }
+  }
+
+  .footer-contact-details {
+    margin-top: 1.5rem;
+    display: flex;
+    column-gap: 1.25rem;
+
+    svg {
+      display: inline;
+    }
+  }
+
+  .footer-copyright {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 991px){
+  footer {
+    .footer-background img {
+      object-position: 0px -175px;
+    }
+  }
+}

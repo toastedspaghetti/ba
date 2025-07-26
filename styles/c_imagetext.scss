@@ -1,0 +1,182 @@
+/* content block - image, text */
+.cb-image-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  row-gap: 2rem;
+  padding: 2rem 0;
+
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    white-space: pre-line;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  // .button {
+  //   display: inline-block;
+  //   padding: 0.75rem 1.5rem;
+  //   background-color: #29bb89;
+  //   color: white;
+  //   text-decoration: none;
+  //   border-radius: 0.375rem;
+  //   font-weight: 600;
+  //   transition: background-color 0.3s ease;
+  //   margin-top: 1rem;
+
+  //   &:hover {
+  //     background-color: #238f6b;
+  //   }
+  // }
+
+  .image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+
+    img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+
+      &.w-75 {
+        max-width: 75%;
+      }
+    }
+  }
+
+  @media (max-width: 769px) {
+    flex-direction: column;
+    &.reverse {
+      flex-direction: column;
+    }
+    .image {
+      order: 1;
+      img {
+        max-width: 100%;
+        &.w-75 {
+          max-width: 100%;
+        }
+      }
+    }
+    .text {
+      order: 2;
+    }
+  }
+
+  &.mini {
+    .text {
+      p {
+        font-size: 0.98rem;
+      }
+    }
+  }
+
+  &.mini {
+    .image-stack {
+      align-self: flex-start;
+    }
+
+    .text {
+      text-align: left;
+    }
+  }
+}
+
+.cb-image-text {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  &.reverse {
+    flex-direction: row-reverse;
+
+    @media (max-width: 769px) {
+      flex-direction: column;
+    }
+  }
+
+  .text {
+    flex: 1;
+  }
+
+  .image-stack {
+    flex: 1;
+    position: relative;
+    // height: 400px;
+    max-width: 100%;
+    cursor: pointer;
+    perspective: 1000px;
+  }
+
+  .stacked-image {
+    // position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .stacked-image.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1.05); // Only scale for pop-out
+    z-index: 10;
+  }
+
+  // Add visual stacking for all image positions
+  .stacked-image:nth-child(1) {
+    z-index: 1;
+    transform: translate(0px, 0px) rotateZ(-5deg);
+  }
+
+  .stacked-image:nth-child(2) {
+    z-index: 2;
+    transform: translate(20px, 10px) rotateZ(3deg);
+  }
+
+  .stacked-image:nth-child(3) {
+    z-index: 3;
+    transform: translate(40px, 20px) rotateZ(-2deg);
+  }
+
+  // Bubble images still float
+  .stacked-image.bubble {
+    // border-radius: 50%;
+    // animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px) rotateZ(0deg);
+    }
+    50% {
+      transform: translateY(-10px) rotateZ(1deg);
+    }
+    100% {
+      transform: translateY(0px) rotateZ(0deg);
+    }
+  }
+}

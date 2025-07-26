@@ -1,0 +1,74 @@
+@mixin link-wipe-underline(
+  $offset: 1.5rem,
+  $bg: white,
+  $hover-text-color: black,
+  $underline-thickness: 1px,
+  $duration: 0.4s
+) {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: #{$offset} 100%;
+  background-repeat: no-repeat;
+  background-size: 100% $underline-thickness;
+  padding-bottom: 0.2em;
+  transition: background-size 0.3s ease;
+  overflow: hidden;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding-right: 0.25rem;
+  font-size: 1rem;
+
+  @media(max-width: 767.98px) {
+    align-items: flex-start;
+    align-self: flex-start;
+    background-image: unset;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    left: $offset;
+    background-color: $bg;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $duration ease;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  &:hover {
+    color: $hover-text-color;
+    > svg {
+      color: $bg;
+    }
+  }
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
+
+  .link-text {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    max-width: 20rem;
+    transition: all $duration ease;
+
+    @media (max-width: 767.98px) {
+        opacity: 0;
+        transform: translateX(10px);
+        max-width: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+  }
+
+  &:hover {
+    .link-text {
+      color: $hover-text-color;
+    }
+  }
+
+}
