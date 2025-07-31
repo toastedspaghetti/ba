@@ -43,8 +43,11 @@
 
     .image-stack {
       width: 100%;
+      min-height: 350px;
       img {
         max-height: 350px;
+        object-fit: cover !important;
+        border-radius: 2rem;
       }
     }
 

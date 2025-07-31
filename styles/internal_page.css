@@ -29,9 +29,13 @@
 }
 .page-internal .image-text-internal .image-stack {
   width: 100%;
+  min-height: 350px;
 }
 .page-internal .image-text-internal .image-stack img {
   max-height: 350px;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
+  border-radius: 2rem;
 }
 .page-internal .image-text-internal.bg-primary {
   background: #141e30; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */

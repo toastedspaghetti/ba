@@ -48,7 +48,8 @@ export default function AboutUsPage() {
             imageSrc: "/banner_aboutus.jpg",
             alt: "Banjara Agro Group - About us",
             heading: "Rooted in Community, Growing with Purpose",
-            subHeading: "From Darahiya to every farm we touch, Banjara Agro exists to uplift lives, protect the earth, and cultivate a future where no one is left behind."
+            subHeading:
+              "From Darahiya to every farm we touch, Banjara Agro exists to uplift lives, protect the earth, and cultivate a future where no one is left behind.",
           },
         ]}
       />
