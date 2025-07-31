@@ -1,0 +1,53 @@
+.cb-grid-internal {
+  display: grid;
+  gap: 3rem;
+  padding: 2rem 1rem;
+}
+.cb-grid-internal .block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.cb-grid-internal .block img {
+  width: 100%;
+  border-radius: 0.75rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.cb-grid-internal .block .text h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.cb-grid-internal .block .text p {
+  font-size: 1rem;
+  color: #333;
+}
+
+@media screen and (min-width: 768px) {
+  .cb-grid-internal {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cb-grid-internal .block {
+    flex-direction: row;
+    align-items: center;
+  }
+  .cb-grid-internal .block:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+  .cb-grid-internal .block img {
+    width: 50%;
+    max-width: 320px;
+    flex-shrink: 0;
+  }
+  .cb-grid-internal .block .text {
+    padding: 0 1.5rem;
+  }
+  .cb-grid-internal .block .text h3 {
+    font-size: 1.5rem;
+  }
+  .cb-grid-internal .block .text p {
+    font-size: 1.1rem;
+  }
+}/*# sourceMappingURL=c_grid_internal.css.map */

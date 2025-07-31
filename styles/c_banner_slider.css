@@ -1,0 +1,79 @@
+/* banner, slider */
+.site-banner {
+  min-height: 80vh;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.site-banner:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.slick-slide > div {
+  height: 100dvh;
+}
+
+.slick-dots {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  list-style: none;
+  background: rgba(23, 21, 22, 0.74);
+  background: transparent;
+  gap: 0rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.55rem;
+  bottom: 0px;
+  width: 100%;
+  max-width: 50%;
+  position: absolute;
+  bottom: 0.5rem;
+  border-radius: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.slick-dots li {
+  flex: 1 1 0%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: background-color 0.3s ease;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+.slick-dots li:not(:first-child), .slick-dots li:not(:last-child) {
+  border-radius: 0px;
+}
+.slick-dots li:first-child {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.slick-dots li:last-child {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+.slick-dots li button {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+}
+.slick-dots li button:before {
+  display: none;
+}
+.slick-dots li.slick-active {
+  background-color: #ffffff;
+}
+
+section.reveal-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+section.reveal-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}/*# sourceMappingURL=c_banner_slider.css.map */

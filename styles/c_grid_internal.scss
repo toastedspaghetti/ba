@@ -1,0 +1,64 @@
+.cb-grid-internal {
+  display: grid;
+  gap: 3rem;
+  padding: 2rem 1rem;
+
+  .block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
+    img {
+      width: 100%;
+      border-radius: 0.75rem;
+      object-fit: cover;
+    }
+
+    .text {
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+        color: #333;
+      }
+    }
+  }
+}
+
+// Responsive 2-column grid on desktop
+@media screen and (min-width: 768px) {
+  .cb-grid-internal {
+    grid-template-columns: repeat(2, 1fr);
+
+    .block {
+      flex-direction: row;
+      align-items: center;
+
+      &:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+
+      img {
+        width: 50%;
+        max-width: 320px;
+        flex-shrink: 0;
+      }
+
+      .text {
+        padding: 0 1.5rem;
+        h3 {
+          font-size: 1.5rem;
+        }
+
+        p {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}
