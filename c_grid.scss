@@ -1,0 +1,320 @@
+.image-grid-container {
+  padding: 2rem;
+  background: linear-gradient(33deg, rgb(251, 248, 248) 0%, rgb(228, 228, 228) 35%, rgb(242, 242, 242) 100%);
+  border-radius: 2rem;
+}
+.image-grid-container h2 {
+  font-size: 2rem;
+}
+
+.doctor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.doctor-card {
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  background: #fff;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+
+.info-box {
+  padding: 1rem;
+  text-align: center;
+}
+
+.info-box h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.info-box p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.social-icons {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.social-icons a {
+  font-size: 1rem;
+  color: #555;
+  text-decoration: none;
+}
+
+.info-box {
+  position: absolute;
+  bottom: 0.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  width: 100%;
+  max-width: 95%;
+  margin: 0 auto;
+  border-radius: 1rem;
+  align-self: center;
+}
+
+.doctor-card {
+  display: flex;
+  justify-content: center;
+}
+
+.doctor-grid {
+  padding-left: 0;
+  padding-right: 0;
+}/*# sourceMappingURL=c_grid_images.css.map */
+
+/****** grid *******/
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas: "one two four four" "one two five five" "one three five five";
+  gap: 1.5rem;
+  height: 60vh;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+@media (max-width: 769px) {
+  .grid {
+    padding-bottom: 0rem;
+  }
+}
+.grid > .grid-box,
+.grid .grid-box-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  will-change: transform;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+.grid > .grid-box::before,
+.grid .grid-box-wrapper::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+.grid > .grid-box:nth-child(1),
+.grid .grid-box-wrapper:nth-child(1) {
+  grid-area: one;
+}
+.grid > .grid-box:nth-child(2),
+.grid .grid-box-wrapper:nth-child(2) {
+  grid-area: two;
+}
+.grid > .grid-box:nth-child(3),
+.grid .grid-box-wrapper:nth-child(3) {
+  grid-area: three;
+}
+.grid > .grid-box:nth-child(4),
+.grid .grid-box-wrapper:nth-child(4) {
+  grid-area: four;
+}
+.grid > .grid-box:nth-child(5),
+.grid .grid-box-wrapper:nth-child(5) {
+  grid-area: five;
+}
+.grid > .grid-box.has-bg-image,
+.grid .grid-box-wrapper.has-bg-image {
+  z-index: 2;
+  position: relative;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  height: 100%;
+  width: 100%;
+}
+.grid > .grid-box.has-bg-image:before,
+.grid .grid-box-wrapper.has-bg-image:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.grid > .grid-box .grid-box-content,
+.grid > .grid-box .grid-info,
+.grid .grid-box-wrapper .grid-box-content,
+.grid .grid-box-wrapper .grid-info {
+  z-index: 2;
+}
+.grid > .grid-box .grid-info,
+.grid .grid-box-wrapper .grid-info {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+@media (min-width: 768px) {
+  .grid > .grid-box .grid-info,
+  .grid .grid-box-wrapper .grid-info {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+  }
+}
+.grid > .grid-box:hover,
+.grid .grid-box-wrapper:hover {
+  cursor: pointer;
+  z-index: 2;
+}
+@media (min-width: 770px) {
+  .grid > .grid-box:hover,
+  .grid .grid-box-wrapper:hover {
+    transform: scale(1.03);
+  }
+}
+.grid > .grid-box:hover .grid-info,
+.grid .grid-box-wrapper:hover .grid-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+.grid > .grid-box.color-primary,
+.grid .grid-box-wrapper.color-primary {
+  color: black;
+}
+.grid > .grid-box.color-primary svg,
+.grid .grid-box-wrapper.color-primary svg {
+  color: black;
+}
+.grid .grid-box-wrapper {
+  position: relative;
+  display: inline-block;
+  border-radius: 1rem;
+  padding: 3px; /* thickness of the border */
+  background: linear-gradient(120deg, #1e6f5c, #3a923a, #1e6f5c);
+  background-size: 800% 800%; /* wider spread for smoother glowing waves */
+  animation: borderMove 2s linear infinite;
+  box-shadow: 0 0 10px rgba(58, 146, 58, 0.6);
+}
+@media (max-width: 769px) {
+  .grid .grid-box-wrapper {
+    padding: 4px;
+  }
+}
+.grid .grid-box-wrapper .grid-box {
+  background: white;
+  border-radius: 0.8rem;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform: scale(1);
+}
+@media (max-width: 769px) {
+  .grid .grid-box-wrapper .grid-box {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+    transform: scale(1);
+  }
+}
+.grid .grid-box-wrapper .grid-box-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 769px) {
+  .grid .grid-box-wrapper .grid-box-content h3 {
+    margin-bottom: 0.5rem;
+  }
+}
+.grid .grid-box-wrapper .grid-box-content p {
+  text-align: center;
+}
+@media (max-width: 769px) {
+  .grid .grid-box-wrapper {
+    max-height: 95%;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100%;
+    flex: 0 0 35%;
+    min-width: 35%;
+    max-width: 80%;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+}
+
+@keyframes borderMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@media (max-width: 768px) {
+  .grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    padding: 0 10vw 1rem;
+    height: 40vh;
+    margin-right: -5rem;
+    margin-left: -5rem;
+    margin-top: 2.5rem;
+  }
+  .grid > .grid-box {
+    max-height: 95%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 1rem;
+  }
+  .grid > .grid-box:first-child {
+    margin-left: 5rem;
+  }
+  .grid-box {
+    flex: 0 0 35%;
+    min-width: 35%;
+    max-width: 80%;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+  .grid::after {
+    content: "";
+    flex: 0 0 10vw;
+    height: 1px;
+  }
+  /* Optional: align first and last card like Monzo */
+  .grid-box:first-child {
+    margin-left: 0.5rem;
+  }
+  .grid-box:last-child {
+    margin-right: 0.5rem;
+  }
+  /* Optional: Hide scrollbar (cross-browser) */
+  .grid::-webkit-scrollbar {
+    display: none;
+  }
+  .grid {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}/*# sourceMappingURL=c_grid.css.map */

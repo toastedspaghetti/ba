@@ -1,0 +1,370 @@
+@use "../styles/variables";
+@use "../styles/colors";
+@use "../styles/structures";
+@use "../styles/housekeeping";
+@use "../styles/fonts";
+
+@use "../styles/c_header.scss";
+@use "../styles/c_footer.scss";
+@use "../styles/c_banner_slider.scss";
+@use "../styles/maybe.scss";
+@use "../styles/c_grid.scss";
+@use "../styles/c_imagetext.scss";
+@use "../styles/c_grid_internal.scss";
+@use "../styles/c_grid_content_image.scss";
+@use "../styles/c_grid_images.scss";
+@use "../styles/c_asg.scss";
+@use "../styles/internal_page.scss";
+@use "../styles/widths.scss";
+@use "../styles/c_heading_text.scss";
+@use "../styles/c_flex_grid.scss";
+@use "../styles/c_slider.scss";
+@use "../styles/c_contact.scss";
+@use "../styles/c_form.scss";
+@use "../styles/c_gradientlink.scss";
+@use "../styles/c_twocolumn_callout.scss";
+@use "../styles/c_statsgrid.scss";
+
+@import "./mixins";
+
+html {
+  font-size: 62.5%;
+  * {
+    box-sizing: border-box;
+    font-family: "TT Ramillas", serif;
+  }
+  font-size: 1rem;
+}
+
+body {
+  position: relative;
+  font-family: "TT Ramillas", serif;
+}
+
+.svg-goo {
+  display: none;
+}
+
+/* headings */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: inherit;
+  font-weight: 700;
+  line-height: 1.2;
+  color: inherit; // inherit color unless overridden
+}
+
+// Individual heading sizes
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+}
+
+h3 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+h4 {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+}
+
+h5 {
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+}
+
+/* general */
+.align-center {
+  text-align: center;
+}
+
+/* banner, slider */
+
+/* content blocks */
+.content-block {
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  &:first-of-type {
+    padding-top: 4rem;
+    // @media (max-width: 768px) {
+    //   padding-top: 2rem;
+    // }
+    // padding-bottom: 4rem;
+  }
+
+  @media (max-width: 767px) {
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+  }
+
+  color: black;
+
+  .cb-list {
+    list-style: disc;
+    padding-left: 1rem;
+
+    .highlight {
+      font-size: 1.5rem;
+      font-weight: 600;
+      background: linear-gradient(
+        270deg,
+        #1e6f5c,
+        #2a9d8f,
+        #a8e6cf,
+        #2a9d8f,
+        #1e6f5c
+      );
+      background-size: 600% 600%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gentleGradientPulse 6s ease-in-out infinite;
+
+      @keyframes gentleGradientPulse {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    }
+  }
+}
+
+/* content block - backdrop */
+.content-block {
+  p {
+    // font-size: 1rem;
+  }
+}
+
+/** content block, image text **/
+
+/* content block - background image */
+.has-bg-image {
+  // min-height: 400px;
+}
+
+section {
+  &.has-bg-image {
+    display: flex;
+    &.tall {
+      min-height: 70vh;
+    }
+
+    flex-direction: column;
+
+    > div {
+      flex: 1;
+      > * {
+        position: relative;
+        z-index: 2;
+      }
+    }
+
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(100, 140, 125, 0.6); /* darker than before */
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    > * {
+    }
+  }
+}
+
+/****** animated stat grid *******/
+
+.skip-margin-v {
+  > div {
+    // padding-top: 4rem;
+    // padding-bottom: 4rem;
+  }
+}
+
+.flex-parent {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 767px) {
+  section[class*="bg-"] {
+    padding-top: 2rem;
+    margin-top: 4rem;
+  }
+}
+
+.bottom-gradient::before {
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.btn {
+  background: white;
+  border: 2px solid variables.$color_headings;
+  border-radius: 5rem;
+}
+
+/* buttons */
+.btn {
+  padding: variables.$padding_btn;
+  border: 1px solid white;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  align-self: flex-start;
+
+  &:hover {
+    background: transparent;
+    color: white;
+  }
+  cursor: pointer;
+
+  &.btn-on-white {
+    border: 1px solid variables.$color_headings;
+    background: white;
+    &:hover {
+      background: variables.$color_headings;
+    }
+  }
+
+  &.btn-primary {
+    background: variables.$color_headings;
+    color: white;
+
+    background: white;
+    color: variables.$color_headings;
+    border: 1px solid variables.$color_headings;
+
+    &:hover {
+      // background: darken(variables.$color_headings, 25%);
+      background: variables.$color_headings;
+      color: white;
+    }
+  }
+
+  &.color-primary {
+    border-color: variables.$color_primary;
+    color: variables.$color_primary;
+    background: transparent;
+
+    &:hover {
+      background: variables.$color_primary;
+      color: white;
+    }
+  }
+}
+.btn-curve {
+  border-radius: variables.$radius_btn;
+}
+
+/* links */
+.link-text-gradient {
+  position: relative;
+  font-size: 1rem;
+  &:hover {
+    background-color: transparent; /* Remove the background color */
+    color: transparent; /* Make the text transparent initially */
+    -webkit-background-clip: text; /* Clip the background to the text */
+    background-clip: text;
+    background-image: linear-gradient(
+      to right,
+      #1e6f5c,
+      #2a9d8f
+    ); /* Gradient using shades of green */
+    background-size: 200% auto; /* Make background size larger than the element */
+    background-position: 0 100%;
+    transition: background-position 0.5s ease-in-out; /* Smooth transition for the background position */
+  }
+}
+
+.d-none {
+  display: none;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+.slick-track {
+  touch-action: pan-y !important;
+}
+
+.slick-track {
+  will-change: transform;
+}
+
+.skip-margin-v {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+/* Refined animation for smoother top-down slide from hamburger */
+
+body.nav-open {
+  overflow: hidden;
+  position: relative;
+}
+
+.site-header {
+  // overflow: hidden;
+
+  &.nav-open {
+    // background: white;
+  }
+}
+
+.page-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease-in-out;
+
+  &.visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.grid-box.glow {
+  opacity: 1;
+}
+
+.align-left {
+  text-align: left;
+}
+
+/* cards */
+
+html {
+  &.nav-open {
+    overflow: hidden;
+  }
+}
+
+body {
+  background: white;
+}

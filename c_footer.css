@@ -1,0 +1,88 @@
+/* footer */
+footer {
+  margin-top: 5rem;
+  min-height: 25rem;
+  background: black;
+  padding: 0rem 0 2rem;
+  position: relative;
+  overflow: hidden;
+  background-color: black;
+}
+
+footer > svg {
+  height: 0px;
+}
+
+footer .footer-logo-social {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 4rem;
+  align-items: center;
+}
+
+footer .footer-logo-social .footer-social {
+  display: flex;
+  -moz-column-gap: 1.25rem;
+  column-gap: 1.25rem;
+}
+
+footer .footer-logo-social .footer-social svg {
+  font-size: 1.75rem;
+}
+
+footer .footer-background {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+footer .footer-background img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  display: block;
+}
+
+footer .footer-background .footer-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, #ffffff 0%, rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0.7) 90%, #000 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, rgba(255, 255, 255, 0.6) 20%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0.75) 90%, #000000 100%);
+  pointer-events: none;
+}
+
+footer .footer-background .footer-gradient-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, black 100%);
+  filter: blur(20px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+footer .footer-contact-details {
+  margin-top: 1.5rem;
+  display: flex;
+  -moz-column-gap: 1.25rem;
+  column-gap: 1.25rem;
+}
+
+footer .footer-contact-details svg {
+  display: inline;
+}
+
+footer .footer-copyright {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 991px) {
+  footer .footer-background img {
+    -o-object-position: 0px -175px;
+    object-position: 0px -175px;
+  }
+} /*# sourceMappingURL=c_footer.css.map */

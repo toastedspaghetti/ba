@@ -1,0 +1,15 @@
+.w-f-025 {
+  flex: 0.25;
+}
+
+.w-f-025.image-stack {
+  flex: 0.25 !important;
+}
+
+.w-f-015 {
+  flex: 0.15;
+}
+
+.w-f-015.image-stack {
+  flex: 0.15 !important;
+} /*# sourceMappingURL=widths.css.map */
